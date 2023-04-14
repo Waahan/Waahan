@@ -1,7 +1,5 @@
-I am Waahan. I aspire to program video games and other big projects.
-I currently use SDL2 a lot with c++
-In future I would like to use Vulkan and python more.
-My public key is:
+I am Waahan. I aspire to program video games and other big projects. I currently use SDL2 a lot with c++. In future I would like to use Vulkan and python more.My public key is:
+
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQINBGQ3WEkBEACj+Pwm5FSGxOXx7lcto+jVpGaTMkHO/nni4DQ+4rpSQvOi016c
