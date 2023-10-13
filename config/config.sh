@@ -6,11 +6,28 @@ isYes()
 {
     input=$1
 
-    if [ "$input" = "Y" ] || [ "$input" = "y" ]
+    if [ "$input" = "Y" ] || [ "$input" = "y" ] || [ "$input" = "yes" ]
         then
             return 1
     else
         return 0
+    fi
+}
+
+addConfig()
+{
+    file=$1
+    homeFile=$2
+    shouldUse=$3
+
+    local path=$(pwd)
+    
+    isYes $shouldUse
+    shouldUse=$?
+
+    if [ $shouldUse = 1 ]
+        then
+            ln -sf $path/$file ~/$homeFile
     fi
 }
 
@@ -20,20 +37,9 @@ linkConfigFiles()
     useVim=$2
     useGit=$3
 
-    if [ $useBash = 1 ]
-        then
-            ln -f .bashrc ~/.bashrc 
-    fi
-
-    if [ $useVim = 1 ]
-        then
-            ln -sf .vimrc ~/.vimrc
-    fi
-
-    if [ $useGit = 1 ]
-            ln -sf .gitconfig ~/.gitconfig
-    fi
-
+    addConfig ".bashrc" ".bashrc" $useBash
+    addConfig ".vimrc" ".vimrc" $useVim
+    addConfig ".gitconfig" ".gitconfig" $useGit
 }
 
 read -p "Use defaults or ask(y or n): " useDefaults
@@ -42,22 +48,13 @@ isYes $useDefaults
 
 if [ $? = 1 ] 
     then 
-        linkConfigFiles 1 1
+        linkConfigFiles "y" "y" "y"
 else
     read -p "Use bash(y or n): " useBash
 
-    isYes $useBash
-    useBash=$?
-
     read -p "Use vim(y or n): " useVim
     
-    isYes $useVim
-    useVim=$?
-
     read -p "Use git(y or n): " useGit
     
-    isYes $useGit
-    useGit=$?
-
-    linkConfigFiles $useBash $useVim
+    linkConfigFiles $useBash $useVim $useGit
 fi
