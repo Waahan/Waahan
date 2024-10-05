@@ -56,10 +56,10 @@ installFile()
     if [ $ACCEPT_ALL != 1 ]
     then
         userAccept "Install $name(y or n): "
-        ACCEPT_ALL="$?"
+        promptResponse="$?"
     fi
 
-    if [ $ACCEPT_ALL = 1 ]
+    if [ $ACCEPT_ALL = 1 ] || [ $promptResponse = 1 ]
     then
         ln -sf "$PWD/$fileName" "$HOME/$fileName"
         echo "Install of $name successful"
