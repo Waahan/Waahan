@@ -1,0 +1,28 @@
+[user]
+	name = Waahan
+	email = william@cryos.org
+	signingkey = EE04BFC56D0BA1806742FC1E40C858C49174B33E
+
+[web]
+	browser = firefox
+
+[core]
+	editor = vim
+	hideDotFiles = false
+	compression = 5
+	looseCompression = 5
+	askPass = true
+	pager = less
+	autocrlf = input
+
+[color]
+	advice = always
+
+[help]
+	autoCorrect = prompt
+
+#[tag]
+	#gpgsign = true
+
+#[commit]
+	#gpgsign = true
